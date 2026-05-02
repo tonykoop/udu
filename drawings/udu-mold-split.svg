@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="800" height="600" fill="white" stroke="#222" stroke-width="1"/>
+  <rect x="0" y="0" width="800" height="36" fill="#1F3A68"/>
+  <text x="12" y="24" fill="white" font-size="16" font-weight="bold">Udu (Medium) — Two-Piece Plaster Mold Split (front view)</text>
+  <text x="788" y="24" fill="white" font-size="10" text-anchor="end">UDU-DRW-002 | REV-A | 2026-05-02 | Units: inches | Scale 1:3</text>
+
+  <!-- Cottle box outline -->
+  <rect x="120" y="60" width="560" height="500" fill="none" stroke="#222" stroke-width="2"/>
+
+  <!-- Upper plaster half -->
+  <rect x="140" y="80" width="520" height="240" fill="#E8DFC2" stroke="#7E6B3A" stroke-width="1.5"/>
+  <text x="155" y="100" font-size="11" fill="#3D2810" font-weight="bold">PLASTER MOLD — UPPER HALF</text>
+
+  <!-- Lower plaster half -->
+  <rect x="140" y="335" width="520" height="220" fill="#E8DFC2" stroke="#7E6B3A" stroke-width="1.5"/>
+  <text x="155" y="550" font-size="11" fill="#3D2810" font-weight="bold">PLASTER MOLD — LOWER HALF</text>
+
+  <!-- Master cavity (egg-pot profile, embedded in plaster, scaled to master = 11.36 in dia, 13.6 in tall) -->
+  <path d="M 320 540
+           C 260 540, 250 460, 270 400
+           C 280 360, 295 300, 330 230
+           L 480 230
+           C 515 300, 530 360, 540 400
+           C 560 460, 550 540, 480 540 Z"
+        fill="#FFFAF0" stroke="#C0392B" stroke-width="2"/>
+
+  <text x="400" y="455" font-size="11" font-weight="bold" text-anchor="middle" fill="#C0392B">MASTER CAVITY</text>
+  <text x="400" y="473" font-size="10" text-anchor="middle" fill="#C0392B">(printed body, scaled 1.136×)</text>
+
+  <!-- Split line -->
+  <line x1="120" y1="328" x2="680" y2="328" stroke="#C0392B" stroke-width="1.5" stroke-dasharray="8 4"/>
+  <text x="135" y="324" font-size="11" fill="#C0392B" font-weight="bold">SPLIT LINE — at body's widest diameter</text>
+
+  <!-- Registration keys -->
+  <circle cx="180" cy="328" r="9" fill="#1F3A68"/>
+  <circle cx="620" cy="328" r="9" fill="#1F3A68"/>
+  <circle cx="400" cy="328" r="9" fill="none" stroke="#1F3A68" stroke-width="2"/>
+  <text x="180" y="355" font-size="9" text-anchor="middle" fill="#1F3A68">key</text>
+  <text x="620" y="355" font-size="9" text-anchor="middle" fill="#1F3A68">key</text>
+  <text x="400" y="355" font-size="9" text-anchor="middle" fill="#1F3A68">pour</text>
+
+  <!-- Pour location → mouth -->
+  <text x="400" y="220" font-size="10" font-weight="bold" text-anchor="middle" fill="#3D2810">slip pour through MOUTH (top of master)</text>
+  <line x1="400" y1="225" x2="400" y2="240" stroke="#3D2810" stroke-width="1.5"/>
+  <polygon points="400,240 396,234 404,234" fill="#3D2810"/>
+
+  <!-- Side-hole location callout -->
+  <text x="265" y="378" font-size="10" fill="#1F3A68" font-weight="bold" text-anchor="end">side hole NOT in mold</text>
+  <text x="265" y="392" font-size="9" fill="#445577" text-anchor="end">(cut at leather-hard)</text>
+  <line x1="270" y1="385" x2="290" y2="385" stroke="#1F3A68"/>
+  <polygon points="290,385 286,381 286,389" fill="#1F3A68"/>
+
+  <!-- Plaster thickness annotation -->
+  <line x1="125" y1="80" x2="125" y2="320" stroke="#222" stroke-width="0.7"/>
+  <text x="105" y="200" font-size="10" text-anchor="middle" transform="rotate(-90 105 200)">≥ 2.0 in plaster</text>
+
+  <!-- Cottle dimensions -->
+  <line x1="140" y1="40" x2="660" y2="40" stroke="#222" stroke-width="0.8"/>
+  <line x1="140" y1="35" x2="140" y2="45" stroke="#222"/>
+  <line x1="660" y1="35" x2="660" y2="45" stroke="#222"/>
+  <text x="400" y="33" font-size="10" text-anchor="middle">cottle interior = 16.0 in</text>
+
+  <!-- Notes block -->
+  <rect x="20" y="565" width="760" height="14" fill="none"/>
+  <text x="28" y="577" font-size="10" fill="#222">NOTE: Mouth pour is the natural top; side hole is cut at leather-hard (UDU-CUT-007). Master must be sealed; min 2.0 in plaster on the medium body for stiffness.</text>
+</svg>
