@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Slip-Cast Ceramic Udu Drum Family — Tony Koop's Build Log</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="hero"><img class="hero-img" src="assets/hero-concept.png" alt="Slip-Cast Ceramic Udu Drum Family"><div class="hero-text"><h1>Slip-Cast Ceramic Udu Drum Family</h1><p>Build a slip-cast ceramic udu family — Small / Medium / Large / XL — with
+repeatable chamber volumes and two playable Helmholtz tones: the main mouth
+tone and the side-hole slap tone. The first production target is the
+**Medium** standard udu (UDU-P2: 10 in × 12 in body, B3 mouth / G3 side),
+followed by a scaled family. The udu (Igbo: *ụdụ*, &quot;vessel&quot;) is a Nigerian
+clay-vessel drum and the documentation here treats that lineage as fact, not
+marketing.</p></div></header>
+<main>
+<section><h2>What this is</h2><p>Build a slip-cast ceramic udu family — Small / Medium / Large / XL — with
+repeatable chamber volumes and two playable Helmholtz tones: the main mouth
+tone and the side-hole slap tone. The first production target is the
+**Medium** standard udu (UDU-P2: 10 in × 12 in body, B3 mouth / G3 side),
+followed by a scaled family. The udu (Igbo: *ụdụ*, &quot;vessel&quot;) is a Nigerian
+clay-vessel drum and the documentation here treats that lineage as fact, not
+marketing.</p>
+<p>The repository is the engineering artifact for the dual-Helmholtz coupled-
+resonator model: parametric design table → 3D-printed master halves →
+two-piece plaster mold → Cone-6 stoneware slip-cast → bisque + tune + glaze.
+The same pipeline serves `ocarina/`, `gemshorn/`, and `transverse-flute/`.</p></section>
+<section><h2>The design</h2><p>The udu uses a shared chamber with two coupled Helmholtz resonators:</p>
+<p>```text
+f_top  = c/(2*pi) * sqrt( A_top  / (V * L_top)  )
+f_side = c/(2*pi) * sqrt( A_side / (V * L_side) )
+L      = wall_thickness + 0.6 * sqrt(A/pi)
+V      = (pi/6) * body_diam^2 * body_height * shape_factor
+```</p>
+<p>When both ports are open and the player&#x27;s hands move, the modes couple — the
+single-port formulas are useful first-order targets, and the placeholder
+coupled-mode eigenvalue model lives in `wolfram-starter.wl`. Measured
+prototypes define the final tuning corrections; per-family corrections feed
+back through `scripts/record_measurement.py` (see
+`references/empirical-learning-loop.md`).</p><figure><object data="assets/drawings/UDU-L-body.svg" type="image/svg+xml" class="drawing"></object><figcaption>UDU-L-body</figcaption></figure>
+<figure><object data="assets/drawings/UDU-M-body.svg" type="image/svg+xml" class="drawing"></object><figcaption>UDU-M-body</figcaption></figure>
+<figure><object data="assets/drawings/UDU-S-body.svg" type="image/svg+xml" class="drawing"></object><figcaption>UDU-S-body</figcaption></figure>
+<figure><object data="assets/drawings/UDU-XL-body.svg" type="image/svg+xml" class="drawing"></object><figcaption>UDU-XL-body</figcaption></figure>
+<figure><object data="assets/drawings/family-overview.svg" type="image/svg+xml" class="drawing"></object><figcaption>family-overview</figcaption></figure>
+<figure><object data="assets/drawings/udu-body-section.svg" type="image/svg+xml" class="drawing"></object><figcaption>udu-body-section</figcaption></figure>
+<figure><object data="assets/drawings/udu-family-scale.svg" type="image/svg+xml" class="drawing"></object><figcaption>udu-family-scale</figcaption></figure>
+<figure><object data="assets/drawings/udu-mold-split.svg" type="image/svg+xml" class="drawing"></object><figcaption>udu-mold-split</figcaption></figure></section>
+<section><h2>The build</h2><h2>Udu Drum Family Assembly Manual</h2>
+<h3>Scope</h3>
+<p>This manual covers slip-cast ceramic udu prototypes based on `docs/Udu.xlsx`, starting with the medium standard udu and expanding to a scaled family.</p>
+<h3>Tools</h3>
+<ul><li>CAD package for body profile and mold split.</li><li>Large-format 3D printer or outsourced print for master halves.</li><li>Plaster mold-making setup: cottle boards, scale, bucket, plaster, mold soap, clamps.</li><li>Cone 6 stoneware casting slip.</li><li>Hole cutters, ribs, sponges, fettling knife, rasp, and small files.</li><li>Calipers, wall-thickness gauge if available, graduated water-fill vessel, tuner/microphone.</li><li>Kiln access, wax resist, exterior glaze.</li><li>Optional: rubber feet, stand prototype, piezo/contact mic.</li></ul>
+<h3>Process</h3>
+<p>1. **Choose size**
+   - Start with the medium workbook design unless testing mold workflow at smaller scale.
+   - Assign build ID and expected shrinkage.</p>
+<p>2. **CAD body and mold strategy**
+   - Model the target fired body first.
+   - Add shrinkage scale to produce the master body.
+   - Choose a split line that releases cleanly and avoids hand-contact ridges.</p>
+<p>3. **Print and seal master**
+   - Print master halves rigid enough for plaster.
+   - Sand high layer lines, fill defects, and seal.
+   - Verify master diameter and height before molding.</p>
+<p>4. **Make plaster mold**
+   - Apply release.
+   - Pour mold halves with registration keys.
+   - Dry completely before first casting.
+   - Record mold dry weight and first-use date.</p>
+<p>5. **Slip cast**
+   - Fill mold with slip.
+   - Drain after target wall thickness buildup.
+   - Record fill time, drain time, slip batch, room condition, and demold time.</p>
+<p>6. **Leather-hard work**
+   - Clean seam.
+   - Cut side hole undersized or at first target.
+   - Round mouth and side-hole edges.
+   - Add foot/stand features only if they do not trap drying stress.</p>
+<p>7. **Dry**
+   - Dry under plastic for even moisture.
+   - Rotate periodically if needed.
+   - Inspect rim, side hole, foot, and seam.</p>
+<p>8. **Bisque fire**
+   - Fire to the clay body&#x27;s bisque schedule.
+   - Measure dimensions, chamber volume, mass, and pitch.</p>
+<p>9. **Tune**
+   - Tune with small changes and document each pass.
+   - For simple open-port Helmholtz behavior, larger port area usually raises resonance; hand-covered playing conditions should be measured separately.
+   - Do not remove more material until the measurement setup is repeatable.</p>
+<p>10. **Glaze**
+    - Glaze exterior only unless intentionally testing interior glaze damping.
+    - Keep mouth and side-hole edges clean.</p>
+<p>11. **Final validation**
+    - Measure final tones, shell tap, weight, stability, and ergonomics.
+    - Record whether feet or stands damp the ceramic tap tone.</p>
+<h3>Failure Modes To Watch</h3>
+<ul><li>Cracks at side hole: hole cut too late, edge too sharp, or drying too fast.</li><li>Dead bass response: chamber too small, ports poorly proportioned, walls too thick, or hand seal poor.</li><li>Uncomfortable slap edge: rim needs larger radius or smoother fired edge.</li><li>Warped base: unsupported drying or uneven mold thickness.</li><li>Over-damped shell: glaze too heavy, feet too soft, or wall too thick.</li></ul><div class="process-grid"><img src="assets/family-overview-concept.png" alt=""></div></section>
+<section><h2>The numbers</h2><h3>BOM</h3><table><thead><tr><th>item_id</th><th>category</th><th>item</th><th>qty</th><th>spec</th><th>make_buy</th><th>estimated_cost</th><th>source_note</th><th>drawing_ref</th><th>notes</th></tr></thead><tbody><tr><td>UDU-BOM-001</td><td>Clay</td><td>Cone 6 casting slip</td><td>5 gal</td><td>Commercial premixed stoneware casting slip</td><td>Buy</td><td>$35-50</td><td>Workbook estimate not date-checked</td><td>UDU-DRW-003</td><td>Enough for roughly 8-12 medium udus per workbook note.</td></tr>
+<tr><td>UDU-BOM-002</td><td>Mold</td><td>#1 pottery plaster</td><td>50 lb</td><td>Pottery plaster for 2-piece mold</td><td>Buy</td><td>$25-35</td><td>Workbook estimate not date-checked</td><td>UDU-DRW-002</td><td>Record plaster ratio and mold dry weight.</td></tr>
+<tr><td>UDU-BOM-003</td><td>Master</td><td>3D printed master</td><td>2 halves</td><td>PLA master scaled for shrinkage</td><td>Make</td><td>$5-15</td><td>Workbook estimate not date-checked</td><td>UDU-DRW-001</td><td>Sand and seal before mold making.</td></tr>
+<tr><td>UDU-BOM-004</td><td>Mold</td><td>Mold soap/release</td><td>1 bottle</td><td>Plaster-compatible release</td><td>Buy</td><td>$8-12</td><td>Workbook estimate not date-checked</td><td>UDU-DRW-002</td><td>Use on sealed master and plaster parting faces.</td></tr>
+<tr><td>UDU-BOM-005</td><td>Cutting</td><td>Hole cutter set</td><td>1 set</td><td>1.5 in to 3 in round cutters</td><td>Buy</td><td>$10-20</td><td>Workbook estimate not date-checked</td><td>UDU-DRW-004</td><td>Cut side hole at leather-hard stage.</td></tr>
+<tr><td>UDU-BOM-006</td><td>Firing</td><td>Bisque and glaze firing</td><td>2 fires</td><td>Cone 06 bisque and Cone 6 glaze</td><td>Buy</td><td>$20-50/fire</td><td>Workbook estimate not date-checked</td><td>UDU-VAL-002</td><td>Record schedule and kiln.</td></tr>
+<tr><td>UDU-BOM-007</td><td>Finish</td><td>Exterior glaze</td><td>1 pint</td><td>Cone 6 matte or satin glaze</td><td>Buy</td><td>$10-20</td><td>Workbook estimate not date-checked</td><td>UDU-DRW-005</td><td>Leave interior unglazed.</td></tr>
+<tr><td>UDU-BOM-008</td><td>Hardware</td><td>Rubber feet</td><td>1 set</td><td>Three low-profile feet</td><td>Buy</td><td>$3-5</td><td>Workbook estimate not date-checked</td><td>UDU-DRW-006</td><td>Optional; test effect on shell resonance.</td></tr>
+<tr><td>UDU-BOM-009</td><td>Electronics</td><td>Contact pickup</td><td class="num">1</td><td>Piezo disc/contact mic</td><td>Buy</td><td>$15-30</td><td>Workbook estimate not date-checked</td><td>UDU-DRW-007</td><td>Optional electric variant.</td></tr>
+<tr><td>UDU-BOM-010</td><td>Measurement</td><td>Water-fill and frequency measurement kit</td><td class="num">1</td><td>Graduated vessel plus tuner/mic</td><td>Buy</td><td>TBD</td><td>Add supplier/date before purchase</td><td>UDU-VAL-003</td><td>Required for empirical correction loop.</td></tr></tbody></table><h3>Cut list</h3><table><thead><tr><th>cut_id</th><th>part</th><th>qty</th><th>rough_dimensions_in</th><th>final_dimensions_in</th><th>material</th><th>orientation</th><th>operation</th><th>tolerance_in</th><th>yield_or_offcut</th><th>notes</th></tr></thead><tbody><tr><td>UDU-CUT-001</td><td>Master body upper half (3D-printed) — Medium</td><td class="num">1</td><td>12 x 12 x 7 envelope</td><td>master scaled by 1/(1-shrinkage); ~1.136x at 12% shrinkage</td><td>PLA or sealable resin</td><td>Z up; mark mouth axis + side-hole datum</td><td>Print in 2-3 sessions; sand layer lines; fill voids; seal</td><td>+/-0.020</td><td>Reuse offcut sprues for shrinkage coupons</td><td>Master scale factor must be re-derived from MEASURED clay shrinkage before final master.</td></tr>
+<tr><td>UDU-CUT-002</td><td>Master body lower half (3D-printed) — Medium</td><td class="num">1</td><td>12 x 12 x 7 envelope</td><td>mirror of UDU-CUT-001</td><td>PLA or sealable resin</td><td>Z up; mark split-line datum</td><td>Print sand fill seal</td><td>+/-0.020</td><td>Reuse offcut sprues</td><td>Same scale factor as UDU-CUT-001.</td></tr>
+<tr><td>UDU-CUT-003</td><td>Wooden cottle boards (mold making)</td><td class="num">4</td><td>18 x 16 x 0.75 each</td><td>16 x 14 x 0.75 each</td><td>Melamine-faced MDF</td><td>Smooth face inward; mark inner clamping zone</td><td>Cut edge-seal drill clamping holes</td><td>+/-0.030</td><td>One sheet of 4ft x 8ft x 0.75 yields all 4 plus 50% of next mold set</td><td>Clean parting wax/release before each pour.</td></tr>
+<tr><td>UDU-CUT-004</td><td>Plaster mother mold half (poured) — Medium</td><td class="num">2</td><td>16 x 14 x 4 each</td><td>16 x 14 x 3.5-3.75 each (around master)</td><td>USG #1 pottery plaster (or equiv.)</td><td>Pour with master keyed to first half; second half over registration</td><td>Mix to 73:100 water:plaster (by weight); 2-min slake; pour around sealed master</td><td>+/-0.10</td><td>Trim spew/edge after demold; recover small offcuts as test slabs</td><td>Min 1.50 in plaster around master; 2.0 in preferred for medium-size pour stiffness.</td></tr>
+<tr><td>UDU-CUT-005</td><td>Greenware vessel (slip-cast) — Medium</td><td>1 per pour</td><td>master cavity wet (~12 x 14 x 7 OD)</td><td>~10.6 x 12.4 x 6.2 fired (12% shrink)</td><td>Cone 6 stoneware casting slip</td><td>Mouth axis along master split</td><td>Slip pour &gt; drain at target wall (~0.30 in / 7.6 mm) &gt; demold leather-hard</td><td>N/A (process-controlled)</td><td>Reuse demold trim/fettling waste as slip recycle</td><td>Wall thickness drives drying time and tap tone — measure on noncritical trim.</td></tr>
+<tr><td>UDU-CUT-006</td><td>Mouth opening (cast as part of master)</td><td class="num">1</td><td>N/A</td><td>3.0 in dia FIRED (=3.41 in master)</td><td>Cone 6 greenware</td><td>Top of body — central</td><td>Cast cleanly via mold shape; rim-round at leather-hard</td><td>+/-0.030</td><td>N/A</td><td>Round rim radius for repeated hand-seal comfort.</td></tr>
+<tr><td>UDU-CUT-007</td><td>Side hole (leather-hard cut)</td><td>1 per body</td><td>N/A</td><td>2.0 in dia FIRED</td><td>Cone 6 greenware</td><td>Side of body at hand-comfort height</td><td>Brass tube cutter or hole punch at leather-hard; clean burr with damp finger</td><td>+/-0.030 (start)</td><td>N/A</td><td>Cut undersized; final tune at bisque if pitch off &gt;50 cents.</td></tr>
+<tr><td>UDU-CUT-008</td><td>Foot pads (optional — cast-in or applied)</td><td>3 per body</td><td>N/A</td><td>~0.5 in dia x 0.10 in tall</td><td>Rubber adhesive feet OR cast-in clay foot</td><td>Tripod 120 deg around base</td><td>Apply post-glaze fire OR cast as part of master</td><td>+/-0.030</td><td>N/A</td><td>Test with and without feet; feet damp shell tap tone (acoustic trade-off).</td></tr>
+<tr><td>UDU-CUT-009</td><td>Post-bisque tuning trim</td><td>as needed</td><td>N/A</td><td>Within +/-50 cents of target frequency per validation.csv</td><td>Bisqued ceramic</td><td>N/A</td><td>Diamond burr in steps; enlarge mouth or side hole to raise pitch</td><td>+/-0.020 dimensional; +/-50 cents acoustic</td><td>N/A</td><td>Document each enlarge step on validation row. Hand coupling shifts perceived pitch — measure both with and without hand seal.</td></tr>
+<tr><td>UDU-CUT-010</td><td>Wax resist mask (pre-glaze)</td><td>1 application</td><td>N/A</td><td>~0.020 in dry film over mouth rim + side hole edge + interior</td><td>Brushable wax resist</td><td>N/A</td><td>Brush-apply; dry per supplier; check all openings clear</td><td>Visual</td><td>N/A</td><td>Mask edges where hand contact happens to keep glaze surface clean.</td></tr>
+<tr><td>UDU-CUT-011</td><td>Glaze application (exterior only)</td><td>1 application</td><td>N/A</td><td>~0.010-0.020 in per coat; 1 coat exterior matte</td><td>Cone 6 satin or matte glaze</td><td>Avoid waxed regions and mouth/side-hole interiors</td><td>Dip / brush / spray exterior only</td><td>+/-0.010 (visual)</td><td>N/A</td><td>Heavy glaze damps shell tap. Keep coat thin.</td></tr>
+<tr><td>UDU-CUT-012</td><td>Family scaling — Small / Large / XL master variants</td><td>1 set each</td><td>Per design table family-spec rows</td><td>Per design table fired dimensions</td><td>Same as UDU-CUT-001/002</td><td>Per family</td><td>Print/master/mold parallel pipeline once Medium voicing is stable</td><td>+/-0.025</td><td>Each size needs its own cottle set</td><td>Defer until UDU-P2 medium prototype validates wall thickness + mouth/side ratio.</td></tr></tbody></table></section>
+<section><h2>Tuning &amp; validation</h2><table><thead><tr><th>build_id</th><th>stage</th><th>date</th><th>model</th><th>clay_body</th><th>shrinkage_expected_pct</th><th>master_scale_factor</th><th>body_diam_in</th><th>body_height_in</th><th>wall_thickness_in</th><th>chamber_volume_in3</th><th>mouth_diam_in</th><th>side_hole_diam_in</th><th>condition</th><th>target_note</th><th>target_freq_hz</th><th>measured_freq_hz</th><th>cents_error</th><th>action</th><th>result</th><th>notes</th></tr></thead><tbody><tr><td>UDU-P1</td><td>greenware</td><td></td><td>Small</td><td></td><td></td><td></td><td class="num">8</td><td class="num">10</td><td>TBD</td><td>TBD</td><td class="num">3</td><td class="num">2</td><td>mouth_open</td><td>D#4</td><td class="num">311</td><td></td><td></td><td></td><td></td><td>First slip-cast body check.</td></tr>
+<tr><td>UDU-P1</td><td>bisque</td><td></td><td>Small</td><td></td><td></td><td></td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>mouth_open</td><td>D#4</td><td class="num">311</td><td></td><td></td><td></td><td></td><td>Measure after shrinkage.</td></tr>
+<tr><td>UDU-P1</td><td>bisque</td><td></td><td>Small</td><td></td><td></td><td></td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>side_open</td><td>A3</td><td class="num">223</td><td></td><td></td><td></td><td></td><td>Check hand slap response.</td></tr>
+<tr><td>UDU-P2</td><td>greenware</td><td></td><td>Medium</td><td></td><td></td><td></td><td class="num">10</td><td class="num">12</td><td class="num">0.3</td><td class="num">440</td><td class="num">3</td><td class="num">2</td><td>mouth_open</td><td>B3</td><td class="num">249</td><td></td><td></td><td></td><td></td><td>Workbook standard target.</td></tr>
+<tr><td>UDU-P2</td><td>bisque</td><td></td><td>Medium</td><td></td><td></td><td></td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>mouth_open</td><td>B3</td><td class="num">249</td><td></td><td></td><td></td><td></td><td>Primary tuning checkpoint.</td></tr>
+<tr><td>UDU-P2</td><td>bisque</td><td></td><td>Medium</td><td></td><td></td><td></td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>side_open</td><td>G3</td><td class="num">192</td><td></td><td></td><td></td><td></td><td>Record whether perceived pitch matches formula.</td></tr>
+<tr><td>UDU-P2</td><td>glaze_fire</td><td></td><td>Medium</td><td></td><td></td><td></td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>mouth_open</td><td>B3</td><td class="num">249</td><td></td><td></td><td></td><td></td><td>Measure glaze shift.</td></tr>
+<tr><td>UDU-P3</td><td>bisque</td><td></td><td>Water udu</td><td></td><td></td><td></td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>TBD</td><td>tilt_sweep</td><td>TBD</td><td>TBD</td><td></td><td></td><td></td><td></td><td>Record water amount and sweep range.</td></tr></tbody></table></section>
+<section><h2>Known risks</h2><h2>Udu Drum Family — Risk Register</h2>
+<p>&gt; Red-team pass on the slip-cast ceramic udu family (UDU-S/M/L/XL). Every risk
+&gt; below has a verifiable test attached. High-severity risks are flagged for
+&gt; Tony&#x27;s decision before we commit material.</p>
+<p>This document is the v4 obligation produced by the `red-team` specialist; the
+verifier asks &quot;is this packet internally consistent?&quot; while red-team asks
+&quot;is this design actually safe to build?&quot; The two are independent — a polished
+self-consistent packet can still fail at the bench.</p>
+<p>Categories enumerated below: **Acoustic**, **Structural**, **Ergonomic**,
+**Supply**, **Fit/Finish**.</p>
+<p>---</p>
+<h3>Acoustic</h3>
+<h3>[Acoustic] Predicted frequencies diverge from workbook targets at family extremes — HIGH</h3>
+<p>**Symptom:** UDU-S mouth tone reads ~340 Hz vs D♯4 target 311 Hz (+157 ¢
+sharp); UDU-XL mouth tone reads ~154 Hz vs F3 target 175 Hz (-220 ¢ flat).
+Family targets at the extremes are out of reach of bisque-stage trim alone
+(the trim band is roughly ±100 ¢ before the port becomes structurally
+compromised or visually disproportionate).</p>
+<p>**Mechanism:** The workbook used identical port diameters (mouth 3 in, side
+2 in) and a fixed shape factor 0.70 across the family. Helmholtz frequency
+scales as √(A / (V · L)), so holding A constant while V scales linearly
+makes the predicted pitch scale as V^(-1/2). The targets were chosen on a
+musical interval ladder (mouth tones D♯4 / B3 / G♯3 / F3 — descending major
+3rd / minor 3rd / minor 3rd) but the *acoustic* scaling of the chosen
+geometry doesn&#x27;t match the *musical* scaling of the targets.</p>
+<p>**Test:** Cast a one-off small body (UDU-P1) and measure the mouth tone
+with a tuner before the family molds are committed. Cents error &gt;100
+on the smallest member confirms the family-level mismatch.</p>
+<p>**Mitigation:**
+- Drop the UDU-S mouth diameter to ≈2.5 in (shrinks predicted Hz back
+  toward 310 Hz) and grow the UDU-XL mouth toward ≈3.5–4.0 in (grows
+  predicted Hz back toward 175 Hz).
+- *Or* keep ports constant and shift the family targets onto an
+  acoustically-honest ladder (e.g., mouth tones at fixed volume ratios).
+- Document whichever path is chosen in `family-spec.csv` and re-emit the
+  per-member SVG drawings.</p>
+<p>**Severity:** **High** — design change required, not just a manufacturing
+adjustment. Escalated to Tony for decision before Tier-3 production CAD.</p>
+<p>---</p>
+<h3>[Acoustic] Coupled-mode pitch when both ports are partly open is not predicted — Medium</h3>
+<p>**Symptom:** A real udu&#x27;s musical character is the *sweep* between the
+mouth and side tones as the player covers/uncovers each port. Single-port
+formulas (used in the design table and Wolfram starter) do not predict
+the coupled-mode pitch or the transition curve.</p>
+<p>**Mechanism:** Two ports sharing a chamber form a 2-DOF Helmholtz system
+with eigenmodes at frequencies that are not the simple geometric mean of
+the single-port frequencies. The coupling strength depends on port-area
+ratio and player hand impedance.</p>
+<p>**Test:** Build UDU-P2 (Medium), record audio at five hand conditions
+(mouth fully open / 25% / 50% / 75% / fully closed against a rigid hand
+seal, side hole open in each), spectrogram analysis of fundamental
+frequency vs hand condition. Compare to the placeholder coupled-mode
+eigenvalue model in `wolfram-starter.wl`.</p>
+<p>**Mitigation:** Empirically calibrate the coupling term in
+`wolfram-starter.wl` from the UDU-P2 measurements; record the calibrated
+coupling coefficient in the per-family corrections database via
+`scripts/record_measurement.py`.</p>
+<p>**Severity:** Medium — affects predictive fidelity, not the build.
+Required before declaring the physics model &quot;validated.&quot;</p>
+<p>---</p>
+<h3>[Acoustic] Glaze fire shifts measured pitch — Medium</h3>
+<p>**Symptom:** A bisque-tuned udu plays sharp/flat after glaze fire. Pitch
+shift typically 5–25 ¢ depending on glaze thickness and exterior coverage.</p>
+<p>**Mechanism:** Glaze adds wall mass (lowers shell-resonance damping
+slightly) and can subtly change the interior surface impedance at high
+frequencies. The Helmholtz fundamental itself is dominated by chamber
+volume × port area, but glaze film thickness can effectively reduce
+chamber volume by 1–3% on a 1/2&quot; wall vessel.</p>
+<p>**Test:** Record mouth + side tones for UDU-P2 at three stages:
+greenware, bisque, glaze-fire. Log all three rows in `validation.csv`
+with environment (temp / RH).</p>
+<p>**Mitigation:** Cut ports slightly under-target at leather-hard;
+final-tune at bisque if needed; commit to glaze fire only when bisque
+tones are within ±25 ¢ of target. Glaze interior is forbidden (already
+called out in build).</p>
+<p>**Severity:** Medium — process-controllable, not a design defect.</p>
+<p>---</p>
+<h3>Structural</h3>
+<h3>[Structural] Wall thickness margin at side-hole edge — Medium</h3>
+<p>**Symptom:** The side hole is cut at leather-hard and then enlarged at
+bisque for tuning. Each enlargement step removes wall material around
+the port. Repeated tuning cycles can leave the rim too thin (&lt;1/8&quot;)
+for hand-slap durability.</p>
+<p>**Mechanism:** Hand slap on the port edge produces local stress
+~10–20× the static body load. A 1/8&quot; minimum wall is the rule for
+Cone-6 stoneware in domestic-use vessels; below that the slap-edge
+chips on first impact.</p>
+<p>**Test:** Slap-test a UDU-P0 port-tile with measured edge thicknesses
+(0.30, 0.20, 0.15, 0.10 in). Document the thickness at which the rim
+chips after 100 slaps with a moderate hand.</p>
+<p>**Mitigation:** Limit total tuning enlargement to ≤30% of original port
+area. Build a tuning trim *budget* into `validation.csv`: if predicted
+cents-error &gt;100 ¢, flag the body for rebuild rather than over-trim.
+Round all port edges with a damp finger / soft rib before bisque.</p>
+<p>**Severity:** Medium — manufacturing-controllable. Becomes High on
+UDU-XL where extreme cents-error correction is implied (see Acoustic
+risk #1).</p>
+<p>---</p>
+<h3>[Structural] Greenware crack risk on long unsupported wall — Medium</h3>
+<p>**Symptom:** UDU-XL&#x27;s 14&quot; diameter × 16&quot; tall body has a 6&quot;+ unsupported
+wall span between mouth and base after demold. Greenware shrinkage during
+drying produces hoop stress; cracks initiate at the side-hole notch and
+propagate vertically.</p>
+<p>**Mechanism:** Differential drying — interior surface dries more slowly
+than exterior — produces a stress gradient. Side-hole cut creates a
+stress concentrator. Stoneware tensile strength at 18–22% moisture
+content is ~50 PSI; predicted hoop stress at the crack location is
+~30–40 PSI for the XL geometry.</p>
+<p>**Test:** First UDU-XL casting carries a strain gauge or dot-grid on
+the exterior wall; photograph at 24-hour intervals during drying;
+inspect side-hole crater for crack initiation. Repeat the same protocol
+on UDU-L as a sanity check.</p>
+<p>**Mitigation:** Slow-dry under plastic sheet for 5–7 days; cut side hole
+*after* initial drying, not at leather-hard. If cracks appear in the
+first XL, increase wall thickness to 0.40 in for that size only and
+re-emit XL drawings.</p>
+<p>**Severity:** Medium for UDU-S/M/L (geometry is well-supported), High
+for UDU-XL specifically — escalated.</p>
+<p>---</p>
+<h3>Ergonomic</h3>
+<h3>[Ergonomic] Side-hole height for seated player — Low</h3>
+<p>**Symptom:** Player seated on a low stool reaches across an UDU-XL
+14&quot; diameter body to slap the side hole; reach distance ~12&quot; puts
+the slap stroke off the player&#x27;s natural arc.</p>
+<p>**Mechanism:** Standing or kneeling play accommodates the larger
+bodies; seated play (most common for solo recording) constrains the
+side-hole height to the 9th–10th-percentile player&#x27;s natural arm-arc.
+For UDU-S/M the side hole at 5–6&quot; height clears this; UDU-L/XL push
+the side hole to 7–8&quot; which is the upper edge of the comfort band.</p>
+<p>**Test:** Mock up the UDU-XL profile in foam core; place on a 14&quot; stand
+and have three players (5th-, 50th-, 95th-percentile arm reach) play
+the side hole for 60 seconds; rate comfort 1–5.</p>
+<p>**Mitigation:** Document recommended playing position per size in
+`assembly-manual.md`. UDU-XL is concert-bass with a stand; specify the
+stand height so the side hole sits at the seated player&#x27;s elbow.</p>
+<p>**Severity:** Low — not a build defect; a documentation obligation.</p>
+<p>---</p>
+<h3>[Ergonomic] Mouth rim sharpness on hand seal — Medium</h3>
+<p>**Symptom:** Player seals the mouth with a flat hand strike. A sharp
+or undercut rim cuts the palm during repeated play; even a slightly
+acute angle causes redness on the heel of the palm after 10 minutes
+of continuous play.</p>
+<p>**Mechanism:** Hand seal needs full-area contact with no high points.
+The fired rim profile depends on the master geometry, demold cleanup,
+and any leather-hard finger-rolling. A clean radius ≥1/8&quot; on the rim
+is the comfort minimum.</p>
+<p>**Test:** UDU-P0 cup tile carries three rim radius variants
+(1/16&quot;, 1/8&quot;, 1/4&quot;). 5-minute continuous play at each; player rates
+comfort + check for skin redness.</p>
+<p>**Mitigation:** Specify rim radius ≥1/8&quot; in the master CAD. Roll the
+rim with a damp finger / soft rib at leather-hard before bisque.
+Reject any body where the rim radius reads &lt;1/16&quot; after demold.</p>
+<p>**Severity:** Medium — affects long play sessions. Easy to fix at the
+master geometry, hard to fix after firing.</p>
+<p>---</p>
+<h3>Supply</h3>
+<h3>[Supply] Cone-6 casting slip shrinkage variance — Medium</h3>
+<p>**Symptom:** Two batches of &quot;Cone 6 stoneware casting slip&quot; from the
+same supplier shrink 11.5% and 13.0% respectively. Master scale factor
+1/(1 - shrinkage) shifts by ~1.5% (from 1.130 to 1.149), enough to
+push a tuned body 30–40 ¢ off target.</p>
+<p>**Mechanism:** Shrinkage is a function of clay particle size, water
+content, organic content, and firing schedule. Manufacturers specify
+a *nominal* shrinkage; actual shrinkage is batch-dependent and the
+spec is rarely tighter than ±1.5%.</p>
+<p>**Test:** Pour three shrinkage coupons (4&quot; × 1&quot; × 0.25&quot; bars) per
+new slip batch; bisque-fire all three; measure shrinkage; record in
+`validation.csv` shrinkage column.</p>
+<p>**Mitigation:** **Re-derive** the master scale factor from the
+*measured* batch shrinkage before printing each new master, not from
+the workbook&#x27;s 12% assumption. The OpenSCAD master takes shrinkage as
+a parameter; this is already wired in, but the procedure must be
+called out in the assembly manual.</p>
+<p>**Severity:** Medium — process-controllable. Skipping the coupon
+test is the failure mode, not the slip itself.</p>
+<p>---</p>
+<h3>[Supply] Bambu X1C build envelope vs UDU-L/XL master — High</h3>
+<p>**Symptom:** Bambu X1C build volume is ~256 × 256 × 256 mm (~10&quot; cube).
+UDU-L master half is 12&quot; tall × 12&quot; wide × 6&quot; deep at 12% shrinkage
+scaling — exceeds the print bed in two dimensions. UDU-XL is worse.</p>
+<p>**Mechanism:** Master halves print as one-shot solids for surface
+finish; splitting them adds layer-line discontinuities that telegraph
+into the plaster mold and ultimately the cast surface.</p>
+<p>**Test:** Open the UDU-L master.scad output in OpenSCAD, export STL
+sliced as a half, load in BambuStudio — confirm &quot;out of build volume&quot;
+warning before printing.</p>
+<p>**Mitigation:** Three options:
+1. **Multi-section masters** — split each L/XL master into 2–3
+   stackable sections, glue and surface-fill at the joint, sand smooth
+   before plaster pour.
+2. **Outsource print** — Shapeways, Craftcloud, or local Maker Nexus
+   bay with a larger printer (Prusa XL, Voron 350+ build, 600 mm
+   format).
+3. **Defer L/XL until the print farm grows** — UDU-S and UDU-M fit
+   the X1C; ship those first. (Already explicitly called out in the
+   README &quot;Status&quot; table.)</p>
+<p>**Severity:** **High** for UDU-L/XL — design constraint that must be
+resolved before Tier-3 CAD. Escalated to Tony.</p>
+<p>---</p>
+<h3>Fit / Finish</h3>
+<h3>[Fit/Finish] Glaze adhesion at port edge — Low</h3>
+<p>**Symptom:** Wax resist at the mouth and side-hole rim is meant to
+keep the rim glaze-free for hand contact. A thin or uneven wax
+application lets glaze creep onto the rim during dipping; the rim
+glaze then chips off in service or feels gritty under the hand.</p>
+<p>**Mechanism:** Wax resist relies on the contact angle between liquid
+glaze and a hydrophobic film. Low-temperature wax (&lt;140 °F drip
+point) re-wets if the bisque body is warm from a kiln just opened.
+Brush strokes leave thin spots.</p>
+<p>**Test:** Wax-resist a bisque coupon along a pencil-marked line;
+dip-glaze; bisque-fire; inspect line edge under raking light for
+glaze creep.</p>
+<p>**Mitigation:** Wax under cool conditions (≤80 °F). Two thin coats
+beat one thick coat. Inspect each rim before glaze fire; touch up wax
+gaps. Specify the wax type in `bom.csv` (currently &quot;wax resist&quot; — too
+generic).</p>
+<p>**Severity:** Low — easy to catch at QC, affects play comfort if missed.</p>
+<p>---</p>
+<h3>[Fit/Finish] Master split-line transfer to cast body — Medium</h3>
+<p>**Symptom:** The two-piece plaster mold has a parting seam where the
+mold halves meet. Casting transfers a fine ridge along this seam onto
+the greenware body. If the seam runs through the hand-contact zone,
+the player feels a subtle bump on each strike.</p>
+<p>**Mechanism:** The mold split is geometrically necessary for demold;
+no slip-cast body avoids it. The skill is to *route* the split line
+away from hand-contact surfaces.</p>
+<p>**Test:** Trace the proposed split line on the master CAD; overlay
+the hand-contact heat-map (mouth seal palm + side-hole slap fingers).
+Any overlap is a design issue; relocate the split line.</p>
+<p>**Mitigation:** Position split line on the front-back equator of the
+body, not on the side-hole face. Trim split-line ridge with a damp
+fettling tool at leather-hard; final smooth before bisque.</p>
+<p>**Severity:** Medium — design + process. Already addressed in the
+mold strategy of `design.md`; this risk register documents the *why*.</p>
+<p>---</p>
+<h3>Cross-cutting / lineage</h3>
+<h3>[Cultural] Public-facing copy must respect Igbo lineage — High (procedural)</h3>
+<p>**Symptom:** Listing the udu in a recruiter-facing portfolio without
+the lineage attribution reads as appropriative or naïve. The udu is
+not a generic ceramic bass pot.</p>
+<p>**Mechanism:** Documentation is a public artifact even when the build
+is private. Recruiters, students, and other makers will read the
+README and the build-log site without context.</p>
+<p>**Test:** Pre-publication review by a knowledgeable second reader
+(family member, cultural-sensitivity reader, or peer maker familiar
+with West African instrument lineage). Sign-off recorded in `notes/`
+before the build-log site goes live.</p>
+<p>**Mitigation:** The README, `design.md`, and the build-log site each
+carry an explicit attribution paragraph. The license clause (CC-BY 4.0)
+is for the *engineering documentation*, not for the instrument concept
+itself. Already captured in the LICENSE file and design.md &quot;Cultural
+And Product Note&quot; — this risk register documents the *requirement*,
+not a defect.</p>
+<p>**Severity:** High (procedural — block publication of build-log site
+until pre-pub review is signed).</p>
+<p>---</p>
+<h3>Risk summary</h3>
+<p>| ID | Category | Severity | Status |
+|---|---|---|---|
+| ACO-01 | Acoustic — family-extremes target mismatch | High | Escalated |
+| ACO-02 | Acoustic — coupled-mode unmodeled | Medium | Empirical loop |
+| ACO-03 | Acoustic — glaze-fire pitch shift | Medium | Process |
+| STR-01 | Structural — port-edge wall margin | Medium | Process |
+| STR-02 | Structural — XL greenware crack | Medium / High XL | Escalated for XL |
+| ERG-01 | Ergonomic — side-hole reach | Low | Documentation |
+| ERG-02 | Ergonomic — mouth rim sharpness | Medium | Master-CAD |
+| SUP-01 | Supply — slip shrinkage variance | Medium | Process |
+| SUP-02 | Supply — Bambu envelope vs L/XL | High | Escalated |
+| FIT-01 | Fit/Finish — glaze creep at port edge | Low | QC |
+| FIT-02 | Fit/Finish — split-line transfer | Medium | Master-CAD |
+| CUL-01 | Cultural — lineage attribution | High procedural | Pre-pub review |</p>
+<p>**High-severity, escalated to human:** ACO-01 (family-extremes target
+mismatch), STR-02 (XL crack risk), SUP-02 (Bambu envelope), CUL-01
+(pre-pub review).</p>
+<p>These four block declaring the v4.1 udu packet &quot;production-tagged&quot; until
+Tony resolves them.</p></section>
+<section><h2>Family overview</h2><ul><li><a href="family/UDU-S.html">UDU-S — </a></li><li><a href="family/UDU-M.html">UDU-M — </a></li><li><a href="family/UDU-L.html">UDU-L — </a></li><li><a href="family/UDU-XL.html">UDU-XL — </a></li></ul></section>
+<section><h2>Resources</h2><ul><li><a href="../README.md">Project README</a></li><li><a href="../capstone-deck.pptx">Capstone deck (.pptx)</a></li><li><a href="../print-packet.pdf">Printable shop packet (.pdf)</a></li><li><a href="https://github.com/tonykoop">Tony's GitHub</a></li></ul></section>
+</main>
+<footer>
+Built by Tony Koop · CC-BY 4.0 · <a href="https://github.com/tonykoop">github.com/tonykoop</a>
+</footer>
+</body>
+</html>

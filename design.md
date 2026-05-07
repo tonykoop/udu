@@ -1,26 +1,63 @@
-# Udu Drum Family Build Packet
+# Slip-Cast Ceramic Udu Drum Family
 
 ## Source
 
-- Design table: `docs/Udu.xlsx`
-- Sheet: `Udu Drum Family`
-- Inspected range: `A1:H146`
-- Workbook content observed: design inputs, dual Helmholtz calculator, four-size family, variants, playing techniques, ceramic production workflow, BOM, design notes, and Wolfram notebook notes.
+- Design table: `udu-design-table.xlsx` (Master_Inputs + Design_Table sheets)
+- Family spec: `family-spec.csv` (S/M/L/XL members)
+- SW reference: `sw-reference/` (MasterLayout convention, equation list, design-table import procedure)
+- Workbook lineage: `docs/Udu.xlsx`, sheet `Udu Drum Family`, inspected range `A1:H146`
+- Workbook content observed: design inputs, dual-Helmholtz calculator, four-size family, variants, playing techniques, ceramic production workflow, BOM, design notes, Wolfram notebook notes.
 
-## Design Intent
+## Project Intent
 
-Build a slip-cast ceramic udu family with repeatable chamber volumes and two playable Helmholtz tones: the main mouth tone and the side-hole slap tone. The first production target is the medium standard udu, followed by a scaled family.
+Build a slip-cast ceramic udu family — Small / Medium / Large / XL — with
+repeatable chamber volumes and two playable Helmholtz tones: the main mouth
+tone and the side-hole slap tone. The first production target is the
+**Medium** standard udu (UDU-P2: 10 in × 12 in body, B3 mouth / G3 side),
+followed by a scaled family. The udu (Igbo: *ụdụ*, "vessel") is a Nigerian
+clay-vessel drum and the documentation here treats that lineage as fact, not
+marketing.
+
+The repository is the engineering artifact for the dual-Helmholtz coupled-
+resonator model: parametric design table → 3D-printed master halves →
+two-piece plaster mold → Cone-6 stoneware slip-cast → bisque + tune + glaze.
+The same pipeline serves `ocarina/`, `gemshorn/`, and `transverse-flute/`.
 
 ## Governing Model
 
-The udu uses a shared chamber with two main ports:
+The udu uses a shared chamber with two coupled Helmholtz resonators:
 
 ```text
-f_top = c/(2*pi) * sqrt(A_top/(V * L_top))
-f_side = c/(2*pi) * sqrt(A_side/(V * L_side))
+f_top  = c/(2*pi) * sqrt( A_top  / (V * L_top)  )
+f_side = c/(2*pi) * sqrt( A_side / (V * L_side) )
+L      = wall_thickness + 0.6 * sqrt(A/pi)
+V      = (pi/6) * body_diam^2 * body_height * shape_factor
 ```
 
-When both ports are open and the player's hands move, the modes couple. The single-port formulas are useful first-order targets; measured prototypes should define the final tuning corrections.
+When both ports are open and the player's hands move, the modes couple — the
+single-port formulas are useful first-order targets, and the placeholder
+coupled-mode eigenvalue model lives in `wolfram-starter.wl`. Measured
+prototypes define the final tuning corrections; per-family corrections feed
+back through `scripts/record_measurement.py` (see
+`references/empirical-learning-loop.md`).
+
+## Hardware Alignment
+
+This repo is one of the slip-cast targets for the in-flight Bambu printer +
+ceramic kiln pipeline shared with `ocarina/`, `gemshorn/`, and
+`transverse-flute/`. The build chain:
+
+| Stage | Tool / pipeline | Notes |
+| --- | --- | --- |
+| Design table | `udu-design-table.xlsx` Master_Inputs | Blue cells = inputs; volume formula derived |
+| Master scaling | `master_scale_factor = 1/(1 - measured_shrinkage)` | Re-derive per slip batch — see risks.md SUP-01 |
+| Master print | Bambu X1C (UDU-S, UDU-M) or outsourced print (UDU-L, UDU-XL) | X1C envelope ≈ 256 mm; L/XL exceed it — see risks.md SUP-02 |
+| Mold | Two-piece plaster mother mold, USG #1 pottery plaster | Split line off the hand-contact equator |
+| Cast | Cone 6 stoneware casting slip | Shrinkage coupon required per batch |
+| Trim | Side hole cut at leather-hard, undersized | Final tune at bisque |
+| Fire | Cone 06 bisque → Cone 6 glaze | Glaze exterior only |
+| Validate | `validation.csv` mouth/side/coupled measurements | `record_measurement.py` updates per-family corrections |
+| CAD round-trip | `UDU-000_MasterLayout.SLDPRT` ↔ `cad/sw-design-table.xlsx` | See `sw-reference/` for the SW workflow |
 
 ## Current Workbook Inputs
 

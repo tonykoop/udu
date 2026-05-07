@@ -10,8 +10,10 @@
 Engineering documentation for a four-size family (Small / Medium / Large / XL) of slip-cast ceramic udu drums, built around the **dual-Helmholtz coupled-resonator** model and a 3D-printed-master / plaster-mold / Cone-6-stoneware production pipeline. The repository combines:
 
 1. **A parametric design table** ([`udu-design-table.xlsx`](udu-design-table.xlsx)) — body diameter, body height, wall thickness, mouth diameter, side-hole diameter, shape factor, shrinkage, and a four-size family-spec block with target mouth-tone and side-tone frequencies. Master scale factor `1/(1 - measured_shrinkage)` is parameterized; for a 12% shrinkage assumption, the master scales at ~1.136×.
-2. **A full build packet** ([`design.md`](design.md), [`bom.csv`](bom.csv), [`sourcing.csv`](sourcing.csv), [`cut-list.csv`](cut-list.csv), [`validation.csv`](validation.csv), [`assembly-manual.md`](assembly-manual.md), [`supplier-rfq.md`](supplier-rfq.md), [`drawing-brief.md`](drawing-brief.md), [`visual-bom-brief.md`](visual-bom-brief.md), [`wolfram-starter.wl`](wolfram-starter.wl)) — the same scaffold used across the [`tonykoop`](https://github.com/tonykoop) musical-instrument catalogue.
-3. **A capstone slide deck and printable shop packet** ([`capstone-deck.pptx`](capstone-deck.pptx), [`print-packet.pdf`](print-packet.pdf)) — recruiter-facing artifacts that show the design is documented well enough that someone else could build it.
+2. **A v4.1 family-spec block** ([`family-spec.csv`](family-spec.csv)) — one row per family member (UDU-S/M/L/XL) with target frequencies, predicted frequencies from the dual-Helmholtz formula, cents-error per port, and the chamber-volume / port-area dimensions that drive both `cad/sw-design-table.xlsx` and `drawings/`.
+3. **A full build packet** ([`design.md`](design.md), [`bom.csv`](bom.csv), [`sourcing.csv`](sourcing.csv), [`cut-list.csv`](cut-list.csv), [`validation.csv`](validation.csv), [`assembly-manual.md`](assembly-manual.md), [`supplier-rfq.md`](supplier-rfq.md), [`drawing-brief.md`](drawing-brief.md), [`visual-bom-brief.md`](visual-bom-brief.md), [`wolfram-starter.wl`](wolfram-starter.wl), [`risks.md`](risks.md)) — the same scaffold used across the [`tonykoop`](https://github.com/tonykoop) musical-instrument catalogue, with v4 red-team risk register added.
+4. **A SolidWorks reference** ([`sw-reference/`](sw-reference/), [`cad/sw-design-table.xlsx`](cad/sw-design-table.xlsx)) — MasterLayout convention, global-equation list, design-table import procedure, and `Extract_Dimensions.swp` macro checklist. Round-trips `family-spec.csv` ↔ SolidWorks via the v4.1 SW workflow.
+5. **A capstone slide deck, printable shop packet, and build-log site** ([`capstone-deck.pptx`](capstone-deck.pptx), [`print-packet.pdf`](print-packet.pdf), [`site/index.html`](site/index.html)) — three recruiter-facing artifacts that show the design is documented well enough that someone else could build it. The site is GitHub Pages compatible — drop `site/` into `docs/` to publish.
 
 Sister repos: [`gemshorn`](https://github.com/tonykoop/gemshorn) (slip-cast horn-flute mold workflow), [`ocarina`](https://github.com/tonykoop/ocarina) (single-Helmholtz vessel-flute, sister slip-cast target), [`transverse-flute`](https://github.com/tonykoop/transverse-flute) (slip-cast workflow at larger scale), [`djembe`](https://github.com/tonykoop/djembe) (where Helmholtz-cavity-resonator analysis was originally derived for the bass tone), and [`instrument-maker`](https://github.com/tonykoop/instrument-maker) (the agent skill that generated this packet).
 
@@ -71,8 +73,10 @@ udu/
 ├── README.md                       ← you are here
 ├── LICENSE                         ← CC-BY 4.0
 │
-├── design.md                       ← dual-Helmholtz model, design intent, prototype ladder
+├── design.md                       ← dual-Helmholtz model, project intent, hardware alignment, prototype ladder
 ├── udu-design-table.xlsx           ← parametric spreadsheet (formulas, blue inputs, family block)
+├── family-spec.csv                 ← S/M/L/XL family-spec rows (v4 family-aware design)
+├── risks.md                        ← red-team risk register (v4 — acoustic/structural/ergonomic/supply/fit-finish)
 │
 ├── bom.csv                         ← bill of materials
 ├── sourcing.csv                    ← supplier/search tracker
@@ -85,14 +89,17 @@ udu/
 ├── visual-bom-brief.md             ← visual-BOM art-direction brief
 ├── wolfram-starter.wl              ← dual-Helmholtz physics starter notebook
 │
-├── capstone-deck.{md,pptx}         ← capstone slide deck (9 slides — v1 codex skill output)
+├── capstone-deck.{md,pptx}         ← capstone slide deck (15 slides — v4.1 watch-points)
 ├── print-packet.{md,html,pdf}      ← combined print-ready shop packet
 ├── capstone-manifest.json          ← orientation manifest
 │
-├── cad/                            ← parametric body OpenSCAD starter (family-aware)
+├── sw-reference/                   ← SolidWorks MasterLayout convention, equation list, import procedure
+├── cad/                            ← parametric body OpenSCAD starter + sw-design-table.xlsx (v4.1)
+├── cad/dimensions/                 ← Extract_Dimensions.swp macro CSV captures
 ├── cnc/                            ← (deferred — slip-cast does not need CNC unless turning a wooden master)
-├── drawings/                       ← SVG drawings: section, mold split, family scale
-└── images/                         ← AI-generated concept renders (placeholders)
+├── drawings/                       ← SVG drawings: per-member body, family-overview, mold split, section
+├── images/                         ← AI-generated concept renders (placeholders)
+└── site/                           ← build-log static site (HTML+CSS, GitHub Pages compatible)
 ```
 
 ## Status
@@ -100,18 +107,33 @@ udu/
 | Section | Status |
 |---|---|
 | Parametric design table + dual-Helmholtz model | ✓ done |
+| **Family-spec.csv (S/M/L/XL with predicted vs target Hz)** | ✓ done — v4.1 |
+| **Risks.md (red-team risk register, 5 categories)** | ✓ done — v4.1 |
 | Build packet (BOM / sourcing / cut-list / validation / RFQ) | ✓ done |
 | Assembly manual + drawing brief | ✓ done |
 | Wolfram physics starter (with coupled-mode placeholder) | ✓ done |
-| Capstone deck + print packet | ✓ done (auto-generated, recruiter-facing) |
+| Capstone deck + print packet | ✓ done — v4.1 (15 slides; Project Intent / Physics / Hardware Alignment / Family Spec) |
+| **Build-log static site (`site/index.html`)** | ✓ done — v4.1 |
 | Concept renders (AI-generated, captioned) | ✓ done (placeholders) |
 | Parametric CAD (OpenSCAD starter, family-aware) | ✓ done (master-shape only) |
-| Dimensioned drawings (SVG) | ✓ done (section + mold split + family scale) |
+| **SolidWorks design table + sw-reference/** | ✓ done — v4.1 |
+| Dimensioned drawings (SVG, per family member + family-overview) | ✓ done — v4.1 |
 | Production-ready CAD (.step / .stl) | **deferred** — generated after empirical Medium-body validation |
 | Coupled-mode tuning model (eigenvalue fit) | **deferred** — needs Phase-1 measured data |
 | First UDU-P1 (Small) prototype build | forthcoming (Bambu + kiln pipeline) |
 
 Tier 3 production files (.step, validated .stl, .dxf, .gcode) are **out of scope until UDU-P2 (Medium) validates wall thickness and port-pitch behavior**. See [`design.md`](design.md) "Open Assumptions" for the deferral reasoning.
+
+### v4.1 escalations
+
+The red-team pass surfaced four high-severity items that block declaring this packet "production-tagged" (see [`risks.md`](risks.md)):
+
+| ID | Description | Action |
+|---|---|---|
+| ACO-01 | Family-extreme target mismatch (UDU-S +157 ¢ sharp, UDU-XL -220 ¢ flat) | Adjust port diameters per size *or* shift family targets onto an acoustically-honest ladder |
+| STR-02 | UDU-XL greenware crack risk on long unsupported wall | Wall thickness 0.40 in for XL only after first XL casting confirms crack initiation |
+| SUP-02 | UDU-L / UDU-XL master halves exceed Bambu X1C build envelope | Outsource print *or* multi-section master *or* defer L/XL until print farm grows |
+| CUL-01 | Igbo lineage attribution requires pre-publication review | Sign-off recorded in `notes/` before site goes live on GitHub Pages |
 
 ## License
 

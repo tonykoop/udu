@@ -1,0 +1,39 @@
+// =============================================================
+// UDU-000_MasterLayout — global equations
+// Paste into:  Tools > Equations > Manage Equations > Global Variables
+// =============================================================
+// Convention:
+//   - snake_case identifiers, identical to family-spec.csv columns
+//   - all numeric values carry _in suffix where dimensional
+//   - SW interprets `=18in` correctly even if document master units are mm
+// =============================================================
+
+// ---- Body envelope (driving) -------------------
+"body_diam_in"          = 10in       // Medium baseline — overridden per config
+"body_height_in"        = 12in       // Medium baseline — overridden per config
+"wall_thk_in"           = 0.30in     // fired wall thickness, all members
+"shape_factor"          = 0.7        // 1.0 = ellipsoid; <1.0 = pinched ovoid
+
+// ---- Ports (driving) ---------------------------
+"mouth_diam_in"         = 3in        // top opening
+"side_diam_in"          = 2in        // side hand-slap port
+
+// ---- Acoustic targets (informational, in design table) -----
+"target_hz_mouth"       = 247        // Medium B3
+"target_hz_side"        = 196        // Medium G3
+"predicted_hz_mouth"    = 249        // formula prediction
+"predicted_hz_side"     = 192        // formula prediction
+"cents_error_mouth"     = 14         // predicted vs target
+"cents_error_side"      = -39        // predicted vs target
+
+// ---- Volume + scaling (driven by Excel formula) ------------
+"chamber_volume_cuin"   = 439.8      // (pi/6)*body_diam^2*body_height*shape_factor
+"master_scale_factor"   = 1.136      // 1/(1 - shrinkage); shrinkage = 0.12
+
+// =============================================================
+// Notes:
+// - In Excel `Master_Inputs` sheet, blue cells = these inputs.
+// - Volume formula derived from inputs; do NOT hand-edit volume.
+// - master_scale_factor must be re-derived from MEASURED slip
+//   shrinkage before each new master print (per risks.md SUP-01).
+// =============================================================
