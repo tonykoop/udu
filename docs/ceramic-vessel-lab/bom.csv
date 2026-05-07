@@ -1,0 +1,11 @@
+item_id,category,item,qty,spec,make_buy,estimated_cost,source_note,drawing_ref,notes
+UDU-BOM-001,Clay,Cone 6 casting slip,5 gal,Commercial premixed stoneware casting slip,Buy,$35-50,Workbook estimate not date-checked,UDU-DRW-003,Enough for roughly 8-12 medium udus per workbook note.
+UDU-BOM-002,Mold,#1 pottery plaster,50 lb,Pottery plaster for 2-piece mold,Buy,$25-35,Workbook estimate not date-checked,UDU-DRW-002,Record plaster ratio and mold dry weight.
+UDU-BOM-003,Master,3D printed master,2 halves,PLA master scaled for shrinkage,Make,$5-15,Workbook estimate not date-checked,UDU-DRW-001,Sand and seal before mold making.
+UDU-BOM-004,Mold,Mold soap/release,1 bottle,Plaster-compatible release,Buy,$8-12,Workbook estimate not date-checked,UDU-DRW-002,Use on sealed master and plaster parting faces.
+UDU-BOM-005,Cutting,Hole cutter set,1 set,1.5 in to 3 in round cutters,Buy,$10-20,Workbook estimate not date-checked,UDU-DRW-004,Cut side hole at leather-hard stage.
+UDU-BOM-006,Firing,Bisque and glaze firing,2 fires,Cone 06 bisque and Cone 6 glaze,Buy,$20-50/fire,Workbook estimate not date-checked,UDU-VAL-002,Record schedule and kiln.
+UDU-BOM-007,Finish,Exterior glaze,1 pint,Cone 6 matte or satin glaze,Buy,$10-20,Workbook estimate not date-checked,UDU-DRW-005,Leave interior unglazed.
+UDU-BOM-008,Hardware,Rubber feet,1 set,Three low-profile feet,Buy,$3-5,Workbook estimate not date-checked,UDU-DRW-006,Optional; test effect on shell resonance.
+UDU-BOM-009,Electronics,Contact pickup,1,Piezo disc/contact mic,Buy,$15-30,Workbook estimate not date-checked,UDU-DRW-007,Optional electric variant.
+UDU-BOM-010,Measurement,Water-fill and frequency measurement kit,1,Graduated vessel plus tuner/mic,Buy,TBD,Add supplier/date before purchase,UDU-VAL-003,Required for empirical correction loop.

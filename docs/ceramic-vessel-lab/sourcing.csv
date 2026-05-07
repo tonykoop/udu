@@ -1,0 +1,8 @@
+item_id,item,required_spec,search_terms,supplier_candidates,date_checked,unit_price,lead_time,substitution_rule,risk_note
+UDU-SRC-001,Cone 6 casting slip,Stoneware casting slip with known shrinkage and mature Cone 6 schedule,cone 6 stoneware casting slip 5 gallon shrinkage,TBD,,,,Substitute only with shrinkage test bars,Unknown shrinkage changes volume and pitch.
+UDU-SRC-002,#1 pottery plaster,Absorbent pottery mold plaster in 50 lb quantity,USG #1 pottery plaster 50 lb,TBD,,,,Equivalent pottery plaster acceptable if absorption is proven,Weak plaster shortens mold life.
+UDU-SRC-003,PLA filament,Stable print material for large master halves,PLA filament large format mold master,TBD,,,,Resin or outsourced print acceptable if sealed,Print warping changes mold volume.
+UDU-SRC-004,Mold release,Plaster-compatible parting/release compound,pottery mold soap plaster release,TBD,,,,Use known ceramic mold release,Release failure can destroy the master.
+UDU-SRC-005,Hole cutters,Clean round cutters from 1.5 in to 3 in,ceramic hole cutter round clay 2 inch 3 inch,TBD,,,,Custom brass tube cutters acceptable,Ragged side hole edge hurts playability.
+UDU-SRC-006,Rubber feet,Low profile feet with adhesive or mechanical mount,rubber feet ceramic instrument low profile,TBD,,,,Use removable feet during acoustic tests,Feet can damp shell tap tone.
+UDU-SRC-007,Piezo pickup,Contact pickup that can survive installation method,piezo disc contact pickup drum ceramic,TBD,,,,External contact mic acceptable for prototype,Internal epoxy is hard to reverse.

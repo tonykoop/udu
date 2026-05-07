@@ -1,0 +1,9 @@
+build_id,stage,date,model,clay_body,shrinkage_expected_pct,master_scale_factor,body_diam_in,body_height_in,wall_thickness_in,chamber_volume_in3,mouth_diam_in,side_hole_diam_in,condition,target_note,target_freq_hz,measured_freq_hz,cents_error,action,result,notes
+UDU-P1,greenware,,Small,,,,8,10,TBD,TBD,3,2,mouth_open,D#4,311,,,,,First slip-cast body check.
+UDU-P1,bisque,,Small,,,,TBD,TBD,TBD,TBD,TBD,TBD,mouth_open,D#4,311,,,,,Measure after shrinkage.
+UDU-P1,bisque,,Small,,,,TBD,TBD,TBD,TBD,TBD,TBD,side_open,A3,223,,,,,Check hand slap response.
+UDU-P2,greenware,,Medium,,,,10,12,0.3,440,3,2,mouth_open,B3,249,,,,,Workbook standard target.
+UDU-P2,bisque,,Medium,,,,TBD,TBD,TBD,TBD,TBD,TBD,mouth_open,B3,249,,,,,Primary tuning checkpoint.
+UDU-P2,bisque,,Medium,,,,TBD,TBD,TBD,TBD,TBD,TBD,side_open,G3,192,,,,,Record whether perceived pitch matches formula.
+UDU-P2,glaze_fire,,Medium,,,,TBD,TBD,TBD,TBD,TBD,TBD,mouth_open,B3,249,,,,,Measure glaze shift.
+UDU-P3,bisque,,Water udu,,,,TBD,TBD,TBD,TBD,TBD,TBD,tilt_sweep,TBD,TBD,,,,,Record water amount and sweep range.
