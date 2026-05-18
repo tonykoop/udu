@@ -104,6 +104,13 @@ udu/
 
 ## Status
 
+Current V5 status: **V5 explorer/readiness packet**. This repository is not yet
+a full V5 build-packet candidate because fired prototype measurements, DXF
+exports, CAD-derived renders, an exploded diagram, an annotated assembly plate,
+and real MCP provenance rows are still missing. See
+[`docs/v5-readiness.md`](docs/v5-readiness.md) and
+[`visual-output-register.csv`](visual-output-register.csv).
+
 | Section | Status |
 |---|---|
 | Parametric design table + dual-Helmholtz model | ✓ done |

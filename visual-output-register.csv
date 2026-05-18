@@ -1,0 +1,9 @@
+artifact_id,path,artifact_kind,role,authority,derived_from,dimension_claim,fabrication_required,notes
+DT-001,udu-design-table.xlsx,design_table,design_table,fabrication,,derived_from_authority,true,Parametric workbook controls current body volume port diameter wall thickness shrinkage and family target assumptions.
+CAD-001,cad/udu_master.scad,cad,fabrication_geometry,fabrication,udu-design-table.xlsx,derived_from_authority,true,OpenSCAD master-shape starter derived from the workbook; not production CAD until fired-volume and port-edge measurements are folded back.
+DT-002,cad/sw-design-table.xlsx,design_table,design_table,fabrication,family-spec.csv,derived_from_authority,true,SolidWorks import table for family rows; authority is limited to the v4.1 design-table assumptions.
+SVG-001,drawings/family-overview.svg,svg_preview,derived_preview,derived_preview,udu-design-table.xlsx,derived_from_authority,false,Family overview preview derived from current design-table geometry.
+SVG-002,drawings/udu-body-section.svg,svg_preview,derived_preview,derived_preview,udu-design-table.xlsx,derived_from_authority,false,Section preview for communication only; no DXF export is present in this repo.
+IMG-001,images/hero-concept.png,image_gen_2_output,concept,concept_only,,none,false,AI-generated concept render; not dimensional evidence or fabrication authority.
+IMG-002,images/family-overview-concept.png,image_gen_2_output,concept,concept_only,,none,false,AI-generated family overview concept; not dimensional evidence or fabrication authority.
+HTML-001,explorer.html,render_preview,build_log,reference_only,visual-output-register.csv,none,false,Human-facing explorer that summarizes evidence boundaries and remaining V5 gates.
