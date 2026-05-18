@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Udu V5 Explorer Readiness</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1d2327;
+      --muted: #59636b;
+      --line: #cfd7dc;
+      --paper: #f7f3ec;
+      --panel: #ffffff;
+      --clay: #9d5035;
+      --lake: #286a73;
+      --leaf: #426b3f;
+      --warn: #a45a10;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    header {
+      min-height: 72vh;
+      display: grid;
+      align-items: end;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.58)),
+        url("images/hero-concept.png") center / cover no-repeat;
+      color: #fff;
+      padding: 32px;
+    }
+    .hero {
+      max-width: 980px;
+    }
+    .eyebrow {
+      margin: 0 0 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 5.6rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+    .hero p {
+      max-width: 760px;
+      margin: 18px 0 0;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 24px 56px;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 10px 0 18px;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+    nav a {
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 8px 11px;
+      font-size: 0.92rem;
+      font-weight: 650;
+      border-radius: 6px;
+    }
+    section {
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.45rem, 3vw, 2.25rem);
+      letter-spacing: 0;
+    }
+    .lead {
+      max-width: 880px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .panel h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+    .panel p {
+      margin: 0;
+      color: var(--muted);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      font-size: 0.94rem;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #edf3f1;
+      color: #172326;
+      font-weight: 750;
+    }
+    tr:last-child td { border-bottom: 0; }
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.92em;
+    }
+    .tag {
+      display: inline-block;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #e9eee8;
+      color: var(--leaf);
+      font-size: 0.78rem;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+    .tag.warn {
+      background: #fff0dc;
+      color: var(--warn);
+    }
+    .tag.info {
+      background: #e7f2f4;
+      color: var(--lake);
+    }
+    .media {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+    figure {
+      margin: 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    figure img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+    figcaption {
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    .callout {
+      border-left: 5px solid var(--clay);
+      background: #fff8ef;
+      padding: 14px 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 720px) {
+      header { min-height: 68vh; padding: 22px; }
+      main { padding: 18px 16px 42px; }
+      .media { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <p class="eyebrow">V5 explorer readiness</p>
+      <h1>Udu slip-cast ceramic vessel drum family</h1>
+      <p>Current evidence supports an honest explorer and review surface. It does not yet support a full V5 build-packet claim because fired measurements, DXF exports, CAD-derived renders, and MCP production provenance remain open.</p>
+    </div>
+  </header>
+  <main>
+    <nav aria-label="Explorer sections">
+      <a href="#status">Status</a>
+      <a href="#family">Family</a>
+      <a href="#authority">Authority</a>
+      <a href="#visuals">Visuals</a>
+      <a href="#gates">V5 Gates</a>
+    </nav>
+
+    <section id="status">
+      <h2>Status</h2>
+      <p class="lead">This repo is a V5 explorer/readiness packet. The builder can inspect the workbook-driven udu family and the current dual-port vessel-resonator assumptions, but all tuning and fabrication-critical claims remain bounded by the current design table until measured prototypes update the evidence chain.</p>
+      <div class="grid">
+        <div class="panel">
+          <h3>Current readiness</h3>
+          <p><span class="tag info">Explorer ready</span> v4.1 baseline plus V5 authority bookkeeping.</p>
+        </div>
+        <div class="panel">
+          <h3>Build authority</h3>
+          <p><span class="tag warn">Not production ready</span> CAD and drawings are starters until fired-volume and shrinkage data are measured.</p>
+        </div>
+        <div class="panel">
+          <h3>Acoustic model</h3>
+          <p><span class="tag warn">Measurement required</span> Dual-port Helmholtz predictions need player-coupled validation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="family">
+      <h2>Family Targets</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Body</th>
+            <th>Volume</th>
+            <th>Mouth target</th>
+            <th>Side target</th>
+            <th>Current caveat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>UDU-S</td>
+            <td>8 x 10 in</td>
+            <td>234.6 in3</td>
+            <td>D#4 / 311.13 Hz</td>
+            <td>A3 / 220.00 Hz</td>
+            <td>Predicted sharp; port or shape-factor correction requires empirical UDU-P1 data.</td>
+          </tr>
+          <tr>
+            <td>UDU-M</td>
+            <td>10 x 12 in</td>
+            <td>439.8 in3</td>
+            <td>B3 / 246.94 Hz</td>
+            <td>G3 / 196.00 Hz</td>
+            <td>Best current prototype target, still measurement-required after firing.</td>
+          </tr>
+          <tr>
+            <td>UDU-L</td>
+            <td>12 x 14 in</td>
+            <td>738.8 in3</td>
+            <td>G#3 / 207.65 Hz</td>
+            <td>D3 / 146.83 Hz</td>
+            <td>Mouth prediction is flat; port scaling must be tested.</td>
+          </tr>
+          <tr>
+            <td>UDU-XL</td>
+            <td>14 x 16 in</td>
+            <td>1148.7 in3</td>
+            <td>F3 / 174.61 Hz</td>
+            <td>C3 / 130.81 Hz</td>
+            <td>Pitch and structural risks remain high until measured; stand likely required.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="authority">
+      <h2>Authority Chain</h2>
+      <p class="lead">Fabrication dimensions are controlled by the design table, family rows, and CAD starter. Concept images and this explorer do not control dimensions, port placement, mold split, tone claims, or toolpaths.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Artifact</th>
+            <th>Path</th>
+            <th>Authority</th>
+            <th>Boundary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Design table</td>
+            <td><code>udu-design-table.xlsx</code></td>
+            <td>Current design-table authority</td>
+            <td>Assumes 12% shrinkage and first-order vessel-resonator predictions.</td>
+          </tr>
+          <tr>
+            <td>Family spec</td>
+            <td><code>family-spec.csv</code></td>
+            <td>Planning authority</td>
+            <td>Marked measurement-required for V5 validator until physical data exists.</td>
+          </tr>
+          <tr>
+            <td>OpenSCAD starter</td>
+            <td><code>cad/udu_master.scad</code></td>
+            <td>CAD starter</td>
+            <td>Needs final rim, foot, stand, port-edge, and shrinkage corrections.</td>
+          </tr>
+          <tr>
+            <td>Visual register</td>
+            <td><code>visual-output-register.csv</code></td>
+            <td>Authority ledger</td>
+            <td>Separates fabrication sources from concept/support imagery.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout">Measured fired chamber volume, port-edge geometry, clay shrinkage, and coupled-mode player response are the next evidence gates before V5 build-packet promotion.</div>
+    </section>
+
+    <section id="visuals">
+      <h2>Visuals</h2>
+      <p class="lead">These images are useful for orientation and storytelling. They are not dimensional references.</p>
+      <div class="media">
+        <figure>
+          <img src="images/hero-concept.png" alt="Concept render of a ceramic udu drum">
+          <figcaption><code>images/hero-concept.png</code> - concept-only image, not fabrication authority.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/family-overview-concept.png" alt="Concept overview of the udu family">
+          <figcaption><code>images/family-overview-concept.png</code> - family concept image, not dimensional evidence.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="gates">
+      <h2>Remaining V5 Gates</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Deliverable</th>
+            <th>Status</th>
+            <th>Next evidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Parametric CAD</td><td>Partial</td><td>Measured shrinkage, fired volume, port corrections, and final CAD details.</td></tr>
+          <tr><td>Vector design plates</td><td>Partial</td><td>DXF exports plus register rows with fabrication authority.</td></tr>
+          <tr><td>Hero render</td><td>Partial</td><td>Blender render derived from exported CAD/STL.</td></tr>
+          <tr><td>Exploded diagram</td><td>Missing</td><td>Component-offset diagram from the authority chain.</td></tr>
+          <tr><td>AI artistic shots</td><td>Partial</td><td>Optional concept outputs registered as non-authoritative.</td></tr>
+          <tr><td>Annotated print plate</td><td>Missing</td><td>Assembly plate with design-table callouts.</td></tr>
+          <tr><td>MCP provenance log</td><td>Partial</td><td>One row per real MCP tool session and artifact.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
