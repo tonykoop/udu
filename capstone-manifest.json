@@ -70,5 +70,23 @@
     "The stashed capstone-manifest.json row for udu was inspected before this update; it did not contain richer V5 data than the current manifest.",
     "Generated images are concept-only and do not control dimensions, pitch targets, port placement, mold split, or toolpaths.",
     "The current explorer is an orientation surface for reviewers and builders; it does not claim measured validation."
-  ]
+  ],
+  "engineering": {
+    "wolfram": [
+      {
+        "source_file": "percussion/udu/docs/ceramic-vessel-lab/udu-ceramic-vessel-lab-starter.wl",
+        "cloud_path": "Musical_Instruments/percussion/udu/udu-ceramic-vessel-lab-starter.wl",
+        "cloud_url": "https://www.wolframcloud.com/obj/wrfcoin/Musical_Instruments/percussion/udu/udu-ceramic-vessel-lab-starter.wl",
+        "permission": "Public-Execute",
+        "kind": "acoustics-starter"
+      },
+      {
+        "source_file": "percussion/udu/udu-starter.wl",
+        "cloud_path": "Musical_Instruments/percussion/udu/udu-starter.wl",
+        "cloud_url": "https://www.wolframcloud.com/obj/wrfcoin/Musical_Instruments/percussion/udu/udu-starter.wl",
+        "permission": "Public-Execute",
+        "kind": "acoustics-starter"
+      }
+    ]
+  }
 }
