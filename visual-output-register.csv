@@ -6,4 +6,5 @@ SVG-001,drawings/family-overview.svg,svg_preview,derived_preview,derived_preview
 SVG-002,drawings/udu-body-section.svg,svg_preview,derived_preview,derived_preview,udu-design-table.xlsx,derived_from_authority,false,Section preview for communication only; no DXF export is present in this repo.
 IMG-001,images/hero-concept.png,image_gen_2_output,concept,concept_only,,none,false,AI-generated concept render; not dimensional evidence or fabrication authority.
 IMG-002,images/family-overview-concept.png,image_gen_2_output,concept,concept_only,,none,false,AI-generated family overview concept; not dimensional evidence or fabrication authority.
+IMG-003,images/macro/side-hole-port.png,image_gen_2_output,concept,concept_only,,none,false,AI-generated macro close-up concept of side hole; not dimensional evidence or fabrication authority.
 HTML-001,explorer.html,render_preview,build_log,reference_only,visual-output-register.csv,none,false,Human-facing explorer that summarizes evidence boundaries and remaining V5 gates.
