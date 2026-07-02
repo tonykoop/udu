@@ -1,0 +1,34 @@
+{
+  "product": "udu",
+  "pipeline": "studiopipeline:evolution-pipeline",
+  "stage": "0-intake",
+  "master_revision": "rev-A (intake, 2026-07-01)",
+  "generated": "2026-07-01",
+  "cad_masters": [
+    {
+      "path": "cad/udu_master.scad",
+      "format": "openscad-source",
+      "sha256": "3ec045b758e5cc83f53b8c541f76a32af287d74531ad54095fb4cc0465b52187",
+      "authority": "pending_measurement",
+      "lossy": false,
+      "notes": "Family-aware master (UDU-S/M/L/XL); render check echoes UDU-M V=439.823 in3, f_top=248.835 Hz, f_side=191.554 Hz matching family-spec.csv. Includes master_scale_factor 1.136 for slip-cast shrinkage."
+    },
+    {
+      "path": "family-spec.csv",
+      "format": "family-spec",
+      "sha256": "79fac1c96f1760c02ea0c0ca49da3dd99e11b8f3c57aff36c2de8a3d846eea4a",
+      "authority": "fabrication",
+      "lossy": false,
+      "notes": "Family scaling law + per-member predictions; dimension_provenance measurement_required across members."
+    },
+    {
+      "path": "udu-starter.wl",
+      "format": "wolfram-source",
+      "sha256": "41861c8cddf447241048d1acce0fb51b5414f8bfd0b85ab65d16ea508bc9144c",
+      "authority": "derived_preview",
+      "lossy": false,
+      "notes": "Source-only; L2 evidence."
+    }
+  ],
+  "notes": "Repo is an L1 concept packet (README denies build-packet candidacy pending measurements); mature v4.1 packet surface (deck, print packet, site) exists. Gate A not run."
+}
