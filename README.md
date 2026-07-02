@@ -104,10 +104,11 @@ udu/
 
 ## Status
 
-Current V5 status: **V5 explorer/readiness packet**. This repository is not yet
-a full V5 build-packet candidate because fired prototype measurements, DXF
-exports, CAD-derived renders, an exploded diagram, an annotated assembly plate,
-and real MCP provenance rows are still missing. See
+**Status:** L1 concept packet — internally called a "V5 explorer/readiness
+packet" (see below). This repository is not yet a full V5 build-packet
+candidate (not L2) because fired prototype measurements, DXF exports,
+CAD-derived renders, an exploded diagram, an annotated assembly plate, and
+real MCP provenance rows are still missing. See
 [`docs/v5-readiness.md`](docs/v5-readiness.md) and
 [`visual-output-register.csv`](visual-output-register.csv).
 
